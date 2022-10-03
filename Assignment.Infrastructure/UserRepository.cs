@@ -19,6 +19,7 @@ public class UserRepository : IUserRepository
         {
             return (Response.Conflict, 0);
         }
+        
         _context.Users.Add(entity);
         _context.SaveChanges();
 

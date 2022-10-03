@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="525a2f0e-e3d0-4550-a859-a68a1eac29a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assignment.Core/Assignment.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/Assignment.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Core/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Core/Usings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Assignment.Infrastructure.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Assignment.Infrastructure.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/UserRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/UserRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/Usings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/Assignment.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/Assignment.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/WorkItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/WorkItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment/Assignment.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment/Assignment.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment/Usings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/TagRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/TagRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +60,7 @@
       <updated>1664799838910</updated>
       <workItem from="1664799846582" duration="1468000" />
       <workItem from="1664801349155" duration="545000" />
+      <workItem from="1664803201431" duration="669000" />
     </task>
     <servers />
   </component>
