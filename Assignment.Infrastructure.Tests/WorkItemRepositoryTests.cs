@@ -16,19 +16,24 @@ public class WorkItemRepositoryTests : IDisposable
         builder.UseSqlite(connection);
         var context = new KanbanContext(builder.Options);
         context.Database.EnsureCreated();
-        context.Add(new User("Poul Poulsen", "poul@thepoul.dk"));
+
+        var user = new User("Poul Poulsen", "poul@thepoul.dk");
 
         var tag1 = new Tag("eat cake");
-        tag1.Id = 0;
-        tag1.Name = "eat cake";
 
-        var task = new WorkItem("Spaghetti"){AssignedTo = context.Users.Find(1), State = State.New};
-        task.Tags.Add(tag1);
+        var task = new WorkItem("Spaghetti"){State = New};
         
-        var task2 = new WorkItem("Meatballs"){AssignedTo = context.Users.Find(1), State = State.Removed};
+        task.Tags.Add(tag1);
 
+        var task2 = new WorkItem("Meatballs"){State = Removed};
+        
+        user.Items.Add(task);
+        user.Items.Add(task2);
+            
+        context.Add(user);
         context.Add(task);
         context.Add(task2);
+        
         context.SaveChanges();
 
         _context = context;
@@ -46,16 +51,16 @@ public class WorkItemRepositoryTests : IDisposable
         var actual = _repository.Create(task);
 
         // Assert
-        actual.Should().Be((Response.Created, 3));
+        actual.Should().Be((Created, 3));
     }
 
- //   [Fact]
+  [Fact]
     public void Read_returns_id_1_and_2()
     {
         var actual = _repository.Read();
         actual.Should().BeEquivalentTo(new[]{
-            new WorkItemDTO(1, "Spaghetti", "Poul Poulsen", new List<string>{"eat cake"}.AsReadOnly(), State.New),
-            new WorkItemDTO(2, "Meatballs", "Poul Poulsen", new List<string>().AsReadOnly(), State.Removed)
+            new WorkItemDTO(1, "Spaghetti", "Poul Poulsen", new List<string>{"eat cake"}.AsReadOnly(), New),
+            new WorkItemDTO(2, "Meatballs", "Poul Poulsen", new List<string>().AsReadOnly(), Removed)
         });
     }
 
