@@ -9,15 +9,15 @@ public class TagRepositoryTests
     private readonly TagRepository _repository;
     public TagRepositoryTests()
     {
-         var connection = new SqliteConnection("Filename=:memory:");
+        var connection = new SqliteConnection("Filename=:memory:");
         connection.Open();
         var builder = new DbContextOptionsBuilder<KanbanContext>();
         builder.UseSqlite(connection);
         var context = new KanbanContext(builder.Options);
         context.Database.EnsureCreated();
 
-        context.Add(new Tag("Low priority") {Id = 1});
-        context.Add(new Tag("High priority") {Id = 2});
+        context.Add(new Tag("Low priority"));
+        context.Add(new Tag("High priority"));
         context.SaveChanges();
 
         _context = context;
@@ -28,19 +28,28 @@ public class TagRepositoryTests
     public void Create_tag_returns_created()
     {
         //Arrange
-        var (response, created) = _repository.Create(new TagCreateDTO("Program"));
-
+        var tag = new TagCreateDTO("Program");
+        var expected = (Created, 3);
+        
+        //Act
+        var actual = _repository.Create(tag);
+        
         //Assert
-        response.Should().Be(Created);
-        created.Should().Be(new TagDTO(3, "Program").Id);
+        actual.Should().Be(expected);
     }
 
- /*   [Fact]
+   [Fact]
     public void Create_returns_conflict_response_if_tag_already_exists()
     {
-       
-        _repository.Create(new TagCreateDTO("Low priority")).Should().Be((Conflict, 1));
-    } */
+        //Arrange
+        var tag = new TagCreateDTO("High priority");
+
+        //act
+        var actual = _repository.Create(tag);
+        
+        //assert
+        actual.Should().Be((Conflict, 0));
+    }
 
     [Fact]
     public void Delete_returns_deleted_response_given_tag()
