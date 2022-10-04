@@ -4,13 +4,26 @@
     <projectFile>Assignment/Assignment.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="525a2f0e-e3d0-4550-a859-a68a1eac29a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assignment.Infrastructure/TagRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.Infrastructure/TagRepository.cs" afterDir="false" />
+    <list default="true" id="525a2f0e-e3d0-4550-a859-a68a1eac29a3" name="Changes" comment="Fix ReadByState_returns_id_1()">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment-04/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.assignment-04/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/bastjansejberg/Library/CloudStorage/OneDrive-ITU/BSc-Semester-3/BDSA/Assignment/g35_assignment-04/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bastjansejberg/Library/CloudStorage/OneDrive-ITU/BSc-Semester-3/BDSA/Assignment/g35_assignment-04/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bastjansejberg/Library/CloudStorage/OneDrive-ITU/BSc-Semester-3/BDSA/Assignment/g35_assignment-04/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/bastjansejberg/Library/CloudStorage/OneDrive-ITU/BSc-Semester-3/BDSA/Assignment/g35_assignment-04/Assignment.Infrastructure.Tests/WorkItemRepositoryTests.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,7 +43,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.Assignment">
     <configuration name="Assignment" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -60,8 +73,66 @@
       <updated>1664799838910</updated>
       <workItem from="1664799846582" duration="1468000" />
       <workItem from="1664801349155" duration="545000" />
-      <workItem from="1664803201431" duration="669000" />
+      <workItem from="1664803201431" duration="4507000" />
+      <workItem from="1664912398200" duration="1157000" />
     </task>
+    <task id="LOCAL-00001" summary="Implement create in TaskRepository">
+      <created>1664804012758</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664804012758</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implement TagRepository">
+      <created>1664804534551</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664804534551</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update Create in TagRepository.cs">
+      <created>1664911761777</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1664911761777</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Remove qualifer &quot;Response&quot;">
+      <created>1664911964576</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1664911964576</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fix test Create_tag_returns_created">
+      <created>1664912028472</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664912028472</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix Read_returns_id_1_and_2">
+      <created>1664913457970</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1664913457970</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fix ReadRemoved_returns_id_2()">
+      <created>1664913500002</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1664913500002</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix ReadByState_returns_id_1()">
+      <created>1664913551987</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1664913551987</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -72,7 +143,34 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Testing" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Testing" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -80,5 +178,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Implement create in TaskRepository" />
+    <MESSAGE value="Implement TagRepository" />
+    <MESSAGE value="Update Create in TagRepository.cs" />
+    <MESSAGE value="Remove qualifer &quot;Response&quot;" />
+    <MESSAGE value="Fix test Create_tag_returns_created" />
+    <MESSAGE value="Fix Read_returns_id_1_and_2" />
+    <MESSAGE value="Fix ReadRemoved_returns_id_2()" />
+    <MESSAGE value="Fix ReadByState_returns_id_1()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix ReadByState_returns_id_1()" />
   </component>
 </project>

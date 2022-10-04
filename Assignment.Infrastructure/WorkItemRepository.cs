@@ -15,13 +15,13 @@ public class WorkItemRepository : IWorkItemRepository
         var entity = new WorkItem(workItem.Title);
         var assignedUser = _context.Users.FirstOrDefault(u => u.Id == workItem.AssignedToId);
 
-        if(assignedUser == null && workItem.AssignedToId != null) return (Response.BadRequest, 0);
+        if(assignedUser == null && workItem.AssignedToId != null) return (BadRequest, 0);
 
         ICollection<Tag> tags = new List<Tag>();
         
         entity.Title = workItem.Title;
         entity.Description = workItem.Description;
-        entity.State = State.New;
+        entity.State = New;
         entity.AssignedTo = assignedUser;
         entity.Tags = tags;
 
@@ -29,7 +29,7 @@ public class WorkItemRepository : IWorkItemRepository
         
         if(taskExists)
         {
-            return (Response.Conflict, 0);
+            return (Conflict, 0);
         }
 
         entity.Created = DateTime.UtcNow;
@@ -38,7 +38,7 @@ public class WorkItemRepository : IWorkItemRepository
         _context.Items.Add(entity);
         _context.SaveChanges();
 
-        response = Response.Created;
+        response = Created;
         
 
         return (response, entity.Id);
@@ -46,7 +46,7 @@ public class WorkItemRepository : IWorkItemRepository
 
     public IReadOnlyCollection<WorkItemDTO> ReadRemoved()
     {
-        return ReadByState(State.Removed);
+        return ReadByState(Removed);
     }
 
     public IReadOnlyCollection<WorkItemDTO> ReadByTag(string tag)
@@ -91,11 +91,11 @@ public class WorkItemRepository : IWorkItemRepository
         
         var entity = _context.Items.Find(workitem.Id);
         
-        if(entity == null) return Response.NotFound;
+        if(entity == null) return NotFound;
         
         var assignedUser = _context.Users.FirstOrDefault(u => u.Id == workitem.AssignedToId);
 
-        if(assignedUser == null) return Response.BadRequest;
+        if(assignedUser == null) return BadRequest;
 
         entity.Title = workitem.Title;
         entity.Description = workitem.Description;
@@ -109,7 +109,7 @@ public class WorkItemRepository : IWorkItemRepository
         
         _context.SaveChanges();
         
-        return Response.Updated;
+        return Updated;
     }
 
     public Response Delete(int workItemId)
@@ -118,17 +118,17 @@ public class WorkItemRepository : IWorkItemRepository
         
         if(workitem == null)
         {
-            return Response.NotFound;
+            return NotFound;
         }
         
-        if(workitem.State == State.New) _context.Items.Remove(workitem);
-        else if (workitem.State == State.Active) {
-            workitem.State = State.Removed;
+        if(workitem.State == New) _context.Items.Remove(workitem);
+        else if (workitem.State == Active) {
+            workitem.State = Removed;
             workitem.StateUpdated = DateTime.UtcNow;
         }
-        else return Response.Conflict;
+        else return Conflict;
         
-        return Response.Deleted;
+        return Deleted;
     }
 
     public WorkItemDetailsDTO? Find(int workItemId)

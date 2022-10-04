@@ -69,7 +69,7 @@ public class WorkItemRepositoryTests : IDisposable
     {
         var actual = _repository.ReadRemoved();
         actual.Should().BeEquivalentTo(new[]{
-            new WorkItemDTO(2, "Meatballs", "Poul Poulsen", new List<string>().AsReadOnly(), State.Removed)
+            new WorkItemDTO(2, "Meatballs", "Poul Poulsen", new List<string>().AsReadOnly(), Removed)
         });
     }
 
@@ -83,9 +83,9 @@ public class WorkItemRepositoryTests : IDisposable
    [Fact]
     public void ReadByState_returns_id_1()
     {
-        var actual = _repository.ReadByState(State.New);
+        var actual = _repository.ReadByState(New);
         actual.Should().BeEquivalentTo(new[]{
-            new WorkItemDTO(1, "Spaghetti", "Poul Poulsen", new List<string>{"eat cake"}.AsReadOnly(), State.New)
+            new WorkItemDTO(1, "Spaghetti", "Poul Poulsen", new List<string>{"eat cake"}.AsReadOnly(), New)
         });
     }
 
@@ -99,33 +99,33 @@ public class WorkItemRepositoryTests : IDisposable
     [Fact]
     public void Update_returns_notfound_given_maxvalue_id()
     {
-        var newWorkItem = new WorkItemUpdateDTO(int.MaxValue, "lol", null, null, new List<string>{"hello"}, State.New);
+        var newWorkItem = new WorkItemUpdateDTO(int.MaxValue, "lol", null, null, new List<string>{"hello"}, New);
         var actual = _repository.Update(newWorkItem);
 
-        actual.Should().Be(Response.NotFound);
+        actual.Should().Be(NotFound);
     }
     
     [Fact]
     public void Update_returns_update_response()
     {
-        var newWorkItem = new WorkItemUpdateDTO(1, "Work harder", _context.Users.Find(1)!.Id, null, new List<string>{"Max"}, State.Closed);
+        var newWorkItem = new WorkItemUpdateDTO(1, "Work harder", _context.Users.Find(1)!.Id, null, new List<string>{"Max"}, Closed);
         var actual = _repository.Update(newWorkItem);
 
-        actual.Should().Be(Response.Updated);
+        actual.Should().Be(Updated);
     }
     
     [Fact]
     public void Delete_returns_deleted_response_given_userId()
     {
         var actual = _repository.Delete(1);
-        actual.Should().Be(Response.Deleted);
+        actual.Should().Be(Deleted);
     }
     
     [Fact]
     public void Delete_returns_notfound_null_given_MaxValue_userId() {
         
         var actual = _repository.Delete(int.MaxValue);
-        actual.Should().Be(Response.NotFound);
+        actual.Should().Be(NotFound);
     }
 
     public void Dispose()

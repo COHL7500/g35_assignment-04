@@ -58,7 +58,7 @@ public class TagRepositoryTests
         var actual = _repository.Delete(1, true);
     
         //Assert
-        actual.Should().Be(Response.Deleted);
+        actual.Should().Be(Deleted);
     }
 
      [Fact]
@@ -68,19 +68,19 @@ public class TagRepositoryTests
         var actual = _repository.Delete(1);
     
         //Assert
-        actual.Should().Be(Response.Conflict);
+        actual.Should().Be(Conflict);
     }
 
     [Fact]
     public void Delete_returns_NotFound_given_non_existing_Id()
     {
-        _repository.Delete(50).Should().Be(Response.NotFound);
+        _repository.Delete(50).Should().Be(NotFound);
     }
 
     [Fact]
     public void Update_returns_notfound_given_non_existing_Id()
     {
-        _repository.Update(new TagUpdateDTO(50, "Program")).Should().Be(Response.NotFound);
+        _repository.Update(new TagUpdateDTO(50, "Program")).Should().Be(NotFound);
     }
 
     [Fact]

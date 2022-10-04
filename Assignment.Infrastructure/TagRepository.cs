@@ -15,13 +15,13 @@ public class TagRepository : ITagRepository
         
         if(tagExists) 
         {
-            return (Response.Conflict, 0);
+            return (Conflict, 0);
         }
         
         _context.Tags.Add(entity);
         _context.SaveChanges();
 
-        response = Response.Created;
+        response = Created;
         
         return (response, entity.Id); 
     }
@@ -53,11 +53,11 @@ public class TagRepository : ITagRepository
     public Response Update(TagUpdateDTO tag)
     {
         var entity = _context.Tags.Find(tag.Id);
-        if(entity == null) return Response.NotFound;
+        if(entity == null) return NotFound;
         entity.Name = tag.Name;
         _context.SaveChanges();
 
-        return Response.Updated;
+        return Updated;
     }
 
     public Response Delete(int tagId, bool force = false)
@@ -65,15 +65,15 @@ public class TagRepository : ITagRepository
         var tag = _context.Tags.FirstOrDefault(t => t.Id == tagId);
         if(tag == null)
         {
-            return Response.NotFound;
+            return NotFound;
         } 
         
         if(!force) 
         {
-            return Response.Conflict;
+            return Conflict;
         }
         
         _context.Tags.Remove(tag);
-        return Response.Deleted;
+        return Deleted;
     }
 }

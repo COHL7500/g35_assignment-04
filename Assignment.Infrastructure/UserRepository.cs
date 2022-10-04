@@ -17,13 +17,13 @@ public class UserRepository : IUserRepository
         var userExists = _context.Users.FirstOrDefault(u => u.Email == user.Email) != null;
         if(userExists) 
         {
-            return (Response.Conflict, 0);
+            return (Conflict, 0);
         }
         
         _context.Users.Add(entity);
         _context.SaveChanges();
 
-        response = Response.Created;
+        response = Created;
 
 
         return (response, entity.Id); 
@@ -34,12 +34,12 @@ public class UserRepository : IUserRepository
         var user = _context.Users.FirstOrDefault(u => u.Id == userId);
         if(user == null)
         {
-            return Response.NotFound;
+            return NotFound;
         } 
         
         bool AssignedToTask = false;
         foreach(var task in user.Items) {
-            if (task.State == State.Active) {
+            if (task.State == Active) {
                 AssignedToTask = true;
                 break;
             }
@@ -47,11 +47,11 @@ public class UserRepository : IUserRepository
 
         if(AssignedToTask && !force) 
         {
-            return Response.Conflict;
+            return Conflict;
         }
         
         _context.Users.Remove(user!);
-        return Response.Deleted;
+        return Deleted;
     }
     
 
@@ -77,11 +77,11 @@ public class UserRepository : IUserRepository
     public Response Update(UserUpdateDTO user)
     {
         var entity = _context.Users.Find(user.Id);
-        if(entity == null) return Response.NotFound;
+        if(entity == null) return NotFound;
         entity.Name = user.Name;
         entity.Email = user.Email;
         _context.SaveChanges();
 
-        return Response.Updated;
+        return Updated;
     }
 }

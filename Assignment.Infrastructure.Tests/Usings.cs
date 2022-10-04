@@ -1,10 +1,8 @@
 global using FluentAssertions;
 global using Xunit;
 global using Assignment.Core;
-global using Assignment.Infrastructure.Tests;
 
 global using Microsoft.Data.Sqlite;
 global using Microsoft.EntityFrameworkCore;
 global using static Assignment.Core.State;
 global using static Assignment.Core.Response;
-global using Assignment.Infrastructure;
