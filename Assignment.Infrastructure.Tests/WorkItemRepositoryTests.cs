@@ -80,7 +80,7 @@ public class WorkItemRepositoryTests : IDisposable
         actual.First().Id.Should().Be(1);
     }
 
- //   [Fact]
+   [Fact]
     public void ReadByState_returns_id_1()
     {
         var actual = _repository.ReadByState(State.New);
