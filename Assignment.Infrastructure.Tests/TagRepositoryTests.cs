@@ -1,5 +1,98 @@
 namespace Assignment.Infrastructure.Tests;
+using Assignment.Core;
+using Assignment.Infrastructure;
 
 public class TagRepositoryTests
 {
+
+    private readonly KanbanContext _context;
+    private readonly TagRepository _repository;
+    public TagRepositoryTests()
+    {
+         var connection = new SqliteConnection("Filename=:memory:");
+        connection.Open();
+        var builder = new DbContextOptionsBuilder<KanbanContext>();
+        builder.UseSqlite(connection);
+        var context = new KanbanContext(builder.Options);
+        context.Database.EnsureCreated();
+
+        context.Add(new Tag("Low priority") {Id = 1});
+        context.Add(new Tag("High priority") {Id = 2});
+        context.SaveChanges();
+
+        _context = context;
+        _repository = new TagRepository(_context);
+    }
+
+    [Fact]
+    public void Create_tag_returns_created()
+    {
+        //Arrange
+        var (response, created) = _repository.Create(new TagCreateDTO("Program"));
+
+        //Assert
+        response.Should().Be(Created);
+        created.Should().Be(new TagDTO(3, "Program").Id);
+    }
+
+ /*   [Fact]
+    public void Create_returns_conflict_response_if_tag_already_exists()
+    {
+       
+        _repository.Create(new TagCreateDTO("Low priority")).Should().Be((Conflict, 1));
+    } */
+
+    [Fact]
+    public void Delete_returns_deleted_response_given_tag()
+    {
+        //Arrange
+        var actual = _repository.Delete(1, true);
+    
+        //Assert
+        actual.Should().Be(Response.Deleted);
+    }
+
+     [Fact]
+    public void Delete_tag_in_use_without_force_returns_Conflict()
+    {
+        //Arrange
+        var actual = _repository.Delete(1);
+    
+        //Assert
+        actual.Should().Be(Response.Conflict);
+    }
+
+    [Fact]
+    public void Delete_returns_NotFound_given_non_existing_Id()
+    {
+        _repository.Delete(50).Should().Be(Response.NotFound);
+    }
+
+    [Fact]
+    public void Update_returns_notfound_given_non_existing_Id()
+    {
+        _repository.Update(new TagUpdateDTO(50, "Program")).Should().Be(Response.NotFound);
+    }
+
+    [Fact]
+    public void Find_returns_null_given_non_existing_Id()
+    {
+        _context.Tags.Find(50).Should().Be(null);
+    }
+
+    [Fact]
+    public void Read_returns_all_tags()
+    {
+        var actual = _repository.Read();
+        actual.Should().BeEquivalentTo(new[] {
+            new TagDTO(1,"Low priority"), new TagDTO(2, "High priority")
+        });
+    }
+
+
+    public void Dispose()
+    {
+        _context.Dispose();
+    }
+
 }

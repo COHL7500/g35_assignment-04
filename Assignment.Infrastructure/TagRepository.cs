@@ -26,6 +26,11 @@ public class TagRepository : ITagRepository
         return (response, entity.Id); 
     }
 
+     public TagRepository(KanbanContext context)
+    {
+        _context = context;
+    }
+
     public IReadOnlyCollection<TagDTO> Read()
     {
         if (!_context.Tags.Any())

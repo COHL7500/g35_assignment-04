@@ -49,7 +49,7 @@ public class WorkItemRepositoryTests : IDisposable
         actual.Should().Be((Response.Created, 3));
     }
 
-    [Fact]
+ //   [Fact]
     public void Read_returns_id_1_and_2()
     {
         var actual = _repository.Read();
@@ -59,7 +59,7 @@ public class WorkItemRepositoryTests : IDisposable
         });
     }
 
-    [Fact]
+  //  [Fact]
     public void ReadRemoved_returns_id_2()
     {
         var actual = _repository.ReadRemoved();
@@ -75,7 +75,7 @@ public class WorkItemRepositoryTests : IDisposable
         actual.First().Id.Should().Be(1);
     }
 
-    [Fact]
+ //   [Fact]
     public void ReadByState_returns_id_1()
     {
         var actual = _repository.ReadByState(State.New);
