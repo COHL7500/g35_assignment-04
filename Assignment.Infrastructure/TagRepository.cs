@@ -11,9 +11,9 @@ public class TagRepository : ITagRepository
         
         var entity = new Tag(tag.Name);
 
-        var userExists = _context.Users.FirstOrDefault(t => t.Name == tag.Name) != null;
+        var tagExists = _context.Tags.FirstOrDefault(t => t.Name == tag.Name) != null;
         
-        if(userExists) 
+        if(tagExists) 
         {
             return (Response.Conflict, 0);
         }
