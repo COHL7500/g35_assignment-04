@@ -64,7 +64,7 @@ public class WorkItemRepositoryTests : IDisposable
         });
     }
 
-  //  [Fact]
+    [Fact]
     public void ReadRemoved_returns_id_2()
     {
         var actual = _repository.ReadRemoved();
