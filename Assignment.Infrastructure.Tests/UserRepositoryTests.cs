@@ -33,7 +33,7 @@ public class UserRepositoryTests : IDisposable
         //act
         var actual = _repository.Create(user);
         //assert
-        actual.Should().Be((Response.Created, 3));
+        actual.Should().Be((Created, 3));
     }
 
     [Fact]
@@ -44,7 +44,7 @@ public class UserRepositoryTests : IDisposable
         //act
         var actual = _repository.Create(user);
         //assert
-        actual.Should().Be((Response.Conflict, 0));
+        actual.Should().Be((Conflict, 0));
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public class UserRepositoryTests : IDisposable
 
         var actual = _repository.Delete(1);
 
-        actual.Should().Be(Response.Deleted);
+        actual.Should().Be(Deleted);
     }
 
     [Fact]
@@ -79,7 +79,7 @@ public class UserRepositoryTests : IDisposable
         var newUser = new UserUpdateDTO(1, "Poul Poulsen", "poulcool@thepoul.dk");
         var actual = _repository.Update(newUser);
 
-        actual.Should().Be(Response.Updated);
+        actual.Should().Be(Updated);
     }
 
     [Fact]
@@ -87,7 +87,7 @@ public class UserRepositoryTests : IDisposable
         
         var actual = _repository.Delete(int.MaxValue);
 
-        actual.Should().Be(Response.NotFound);
+        actual.Should().Be(NotFound);
     }
 
     [Fact]
@@ -95,7 +95,7 @@ public class UserRepositoryTests : IDisposable
         var newUser = new UserUpdateDTO(int.MaxValue, "Poul Poulsen", "poulcool@thepoul.dk");
         var actual = _repository.Update(newUser);
 
-        actual.Should().Be(Response.NotFound);
+        actual.Should().Be(NotFound);
     }
 
     public void Dispose()
