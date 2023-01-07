@@ -20,6 +20,8 @@ public class WorkItem
 
     public DateTime StateUpdated { get; set; }
 
+    // Don't use constructor method when having object initializer
+    
     public WorkItem(string title)
     {
         Title = title;
