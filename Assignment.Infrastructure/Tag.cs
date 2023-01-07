@@ -6,6 +6,8 @@ public class Tag
     public string Name { get; set; }
     public ICollection<WorkItem> Items { get; set; }
 
+    // Don't use constructor when having object initializer. 
+    
     public Tag(string name)
     {
         Name = name;
